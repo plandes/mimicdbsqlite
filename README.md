@@ -1,4 +1,4 @@
-# MIMIC-III SQLite Database Create
+# MIMIC-III SQLite Database Creation
 
 [MIMIC-III] is a corpus has 58,976 hospital admission and 2,083,180 had written
 notes by medical professionals.  This repo contains an automated build process
