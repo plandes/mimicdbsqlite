@@ -10,7 +10,7 @@ using scripts from the [MIMIC Code Repository].
 
 1. Download the source [MIMIC-III] data files as the file
    `mimic-iii-clinical-database-1.4.zip` to this directory.
-1. Install [git], and [GNU make]/
+1. Install [git], and [GNU make].
 1. Run the automation process: `make all`.  This does the following:
    1. Uncompress the `mimic-iii-clinical-database-1.4.zip` of the compressed
       CSV MIMIC-III data files.
