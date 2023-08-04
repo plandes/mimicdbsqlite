@@ -20,11 +20,12 @@ using scripts from the [MIMIC Code Repository].
    1. Creates some indexes on some tables such as `NOTEEVENTS`, `ADMISSIONS`
       and `PATEINTS`.
 1. Create additional indexes to suit your needs.  Use the [post configuration
-   script](./src/bin/postconfig.sh) as an example.
+   script] as an example.
 1. Check for errors and the existence of the `mimic3.sqlite3` SQLite database
    file.
 1. Optionally clear up disk usage: `make cleanall`.
-
+1. Optionally reduce the SQLite database file by editing and rerunning the
+   [post configuration script].
 
 
 <!-- links -->
@@ -33,3 +34,4 @@ using scripts from the [MIMIC Code Repository].
 [git]: https://git-scm.com
 [GNU make]: https://www.gnu.org/software/make/
 [MIMIC-III code repository]: https://github.com/MIT-LCP/mimic-code.git
+[post configuration script]: ./src/bin/postconfig.sh

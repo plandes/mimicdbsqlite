@@ -56,7 +56,8 @@ function drop_tables() {
 function main() {
     echo "post processing steps on : ${DB_FILE}"
     add_indexes
-    drop_tables
+    # uncomment the following to save only certain tables to save space
+    # drop_tables
 }
 
 main
