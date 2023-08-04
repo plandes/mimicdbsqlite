@@ -10,6 +10,8 @@ PROJ_MODULES =		git
 # build app config
 DATA_ARCH_DIR ?=	mimic-iii-clinical-database-1.4
 CODE_DIR ?=		./mimic-code/mimic-iii/buildmimic/sqlite
+DB_FILE_NAME ?=		mimic3.sqlite3
+DB_ABS_FILE ?=		$(CODE_DIR)/$(DB_FILE_NAME)
 
 # clean
 ADD_CLEAN_ALL +=	$(DATA_ARCH_DIR) ./mimic-code
@@ -33,4 +35,9 @@ $(CODE_DIR):		$(DATA_ARCH_DIR)
 # load the database
 .PHONY:			load
 load:			$(CODE_DIR)
-			( cd $(CODE_DIR) ; ./import.sh )
+			( cd $(CODE_DIR) ; ./import.sh && mv mimic3.db $(DB_FILE_NAME) )
+
+.PHONY:			postconfig
+postconfig:
+			@echo "executing post configuration..."
+			./src/bin/postconfig.sh $(DB_ABS_FILE)
