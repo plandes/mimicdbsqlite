@@ -17,6 +17,10 @@ DB_ABS_FILE ?=		$(CODE_DIR)/$(DB_FILE_NAME)
 ADD_CLEAN_ALL +=	$(DATA_ARCH_DIR) ./mimic-code
 
 
+# default target creates the DB and configures it
+all:			createdb
+
+
 include ./zenbuild/main.mk
 
 
@@ -33,11 +37,19 @@ $(CODE_DIR):		$(DATA_ARCH_DIR)
 			cp $(DATA_ARCH_DIR)/* $(CODE_DIR)
 
 # load the database
-.PHONY:			load
-load:			$(CODE_DIR)
+.PHONY:			loaddb
+loaddb:			$(CODE_DIR)
 			( cd $(CODE_DIR) ; ./import.sh && mv mimic3.db $(DB_FILE_NAME) )
 
+# add a minimal set of indexes
 .PHONY:			postconfig
-postconfig:
+postconfig:		loaddb
 			@echo "executing post configuration..."
 			./src/bin/postconfig.sh $(DB_ABS_FILE)
+
+# create the database and configure it
+.PHONY:			createdb
+createdb:		postconfig
+			cp $(DB_ABS_FILE) .
+			@echo "DB file created: $(DB_FILE_NAME)"
+			ls -lh $(DB_FILE_NAME)
