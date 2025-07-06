@@ -35,6 +35,7 @@ create index admissions_hadm_id on admissions(hadm_id);
 create index admissions_subject_id on admissions(subject_id);
 create index admissions_diagnosis on admissions(diagnosis);
 create index patients_subject_id on patients(subject_id);
+create index diagnoses_icd_hadm_id on diagnoses_icd(hadm_id);
 create index diagnoses_icd_icd9_code on diagnoses_icd(icd9_code);
 create index procedures_icd_icd9_code on procedures_icd(icd9_code);
 create index d_icd_diagnoses_icd_icd9_code on d_icd_diagnoses(icd9_code);
